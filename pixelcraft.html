@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelCraft Studio</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <style>
+        /* Reset some basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and background */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 50px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: #F1D26D;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 50px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #9B57D8;
+            font-size: 26px;
+            padding-bottom: 25px;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            border-bottom: 3px solid #9B57D8;
+            padding-bottom: 22px;
+        }
+
+        .name {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 60px;
+            width: 50%;
+        }
+
+        .name p {
+            font-size: 38px;
+            font-weight: bold;
+            color: transparent;
+            background-image: linear-gradient(to left, #ff7e5f, #feb47b, #ff9a8b, #ffb6a1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: rainbow 5s linear infinite;
+            padding-left: 20px;
+        }
+
+        .go-back {
+            font-size: 18px;
+            color: black;
+            text-decoration: none;
+            font-weight: normal;
+            margin-left: 15px;
+        }
+
+        @keyframes rainbow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
+/* Full Width Image Section */
+#intro {
+  margin-top: 100px; /* Adjusted for the navbar */
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+}
+
+/* Prototype Button */
+#prototype-button {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.prototype-btn {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #9B57D8;
+  border: 2px solid #9B57D8;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.prototype-btn:hover {
+  background-color: #9B57D8;
+  color: white;
+}
+
+/* Introduction Section */
+#introduction {
+  margin: 50px 0;
+  padding: 20px;
+  text-align: center;
+}
+
+#introduction h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #9B57D8;
+}
+
+#introduction p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+  margin-top: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Design Process Section */
+#design-process {
+  margin: 50px 0;
+  
+}
+
+.design-process-content {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+#design-process p{
+    font-size: 18px;
+    max-width: 1500px;
+    margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  
+}
+
+#design-process h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #9B57D8;
+}
+
+.hero-images img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover; /* Ensures the image is cropped and maintains aspect ratio */
+}
+.hero-imagess img {
+  width: 100%;
+  height: 650px;
+  object-fit: cover; /* Ensures the image is cropped and maintains aspect ratio */
+}
+/* Target Audience Section with Two Columns */
+#target-audience {
+  margin: 50px 0;
+  padding: 20px;
+}
+
+.target-audience-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.left-column, .right-column {
+  width: 48%;
+}
+
+.left-column h2, .right-column h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #9B57D8;
+  margin-bottom: 15px;
+}
+
+.left-column ul, .right-column ul {
+  list-style-type: disc;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+  padding-left: 20px;
+}
+
+.left-column li, .right-column li {
+  margin-bottom: 10px;
+}
+
+.color-palette-image img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* Features, Shortcomings, Conclusion Sections */
+#features,
+#shortcomings,
+#conclusion {
+  margin: 50px 0;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+ 
+}
+
+
+#conclusion p {
+  list-style: none;
+  font-size: 18px;
+    max-width: 1500px;
+    margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+text-align: center;
+}
+/* #features ul,
+#shortcomings ul{
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+    padding-left: 20px;
+    text-align: center;
+} */
+
+#features h2,
+#shortcomings h2,
+#conclusion h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #9B57D8;
+}
+
+#features ul li,
+#shortcomings ul li {
+  font-size: 18px;
+  margin: 10px 0;
+  text-decoration: none;
+}
+#features li, #shortcomings li{
+  text-decoration: none;
+}
+
+#conclusion p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+.iframe-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.iframe-container {
+  display: inline-block; /* Centers the iframe */
+  overflow: hidden; /* Hides overflow to prevent scrollbars */
+  width: 90%; /* Controls the container width, adjust as needed */
+  max-width: 1200px; /* Optional maximum width */
+  transform: scale(1.1); /* Adjust the zoom level here */
+  transform-origin: center top; /* Zooms from the top center */
+}
+
+.iframe-container iframe {
+  width: 100%; /* Full width of container */
+  height: 450px; /* Adjust height as needed */
+}
+
+
+      
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .skills-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .skill-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: black;
+    background: transparent;
+    border: 2px solid #9b4dca; /* Purple border */
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .skill-button:hover {
+    background-color: #9b4dca; /* Purple background on hover */
+    color: white;
+  }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="name">
+            <div class="skills-buttons">
+                <a href="index.html" class="go-back skill-button">Go Back</a>
+          </div>
+            
+            <p>Nabeela Heske</p>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Experiences</a></li>
+            <li><a href="index.html#contact">Contact Me</a></li>
+        </ul>
+    </nav>
+
+  <!-- Full Width Image Section -->
+  <section id="intro">
+    <div class="hero-image">
+      <img src="images/1.png" alt="Pixelcraft App" style="width: 100%;">
+    </div>
+  </section>
+
+  <!-- Prototype Button -->
+  <section id="prototype-button">
+    <div class="button-container">
+      <a href="https://nabeelacoder.github.io/PixelCraft-Studio/" class="prototype-btn">Live View Here </a>
+    </div>
+  </section>
+
+    <!-- Introduction Section -->
+    <section id="introduction">
+        <div class="intro-content">
+          <h2>How it Started?</h2>
+          <p>
+            One morning, as the sun peeked through my window, I was struck by a thought: What if there was an application that could transform the lives of graphic designers and make their creative process easier? The idea for PixelCraft Studio was born. Fueled by inspiration and, admittedly, 43 cups of coffee, I dove headfirst into the world of design technology.
+          </p>
+        </div>
+      </section>
+
+        <!-- Design Process Section -->
+  <section id="introduction">
+    <div class="design-process-content">
+      <h2>Design Process</h2>
+      <p>
+        PixelCraft Studio is envisioned as a user-friendly alternative to Canva, aimed at empowering both novice and seasoned designers. Currently a work in progress, this application already boasts a variety of features designed to facilitate creativity. Users can explore an array of templates for business cards and posters, allowing them to kickstart their projects with ease. The editing capabilities are straightforward yet effective, ensuring that anyone can create stunning visuals without feeling overwhelmed.</p>
+    </div>
+    <div class="hero-images">
+      <img src="images/2.png" alt="Design Process" style="width: 100%; height: 650px; object-fit: cover;">
+    </div>
+    <div class="hero-images">
+      <img src="images/3.png" alt="Design Process" style="width: 100%; height: 650px; object-fit: cover;">
+    </div>
+    <div class="hero-images">
+        <img src="images/4.png" alt="Design Process" style="width: 100%; height: 650px; object-fit: cover;">
+      </div>
+      <div class="hero-images">
+        <img src="images/5.png" alt="Design Process" style="width: 100%; height: 650px; object-fit: cover;">
+      </div>
+     
+  </section>
+
+
+  <section id="conclusion">
+    <div class="section-content">
+      <h2>Why it Stands Out?</h2>
+      <p>
+        One of the standout features is the website builder, which incorporates a simple drag-and-drop functionality. While still in its early stages, this tool promises to revolutionize how users approach web design, making it accessible for those without coding experience. Imagine being able to craft a beautiful website in just a few clicks!
+        But that’s not all—PixelCraft Studio also includes a playful painting canvas where users can let their imaginations run wild. This feature encourages creativity and experimentation, providing a space for designers to doodle or brainstorm ideas without constraints.
+    </p>
+    </div>
+  </section>
+
+
+  <!-- Conclusion Section -->
+  <section id="conclusion">
+    <div class="section-content">
+      <h2>Conclusion</h2>
+      <p>
+        As I continue to refine PixelCraft Studio, I envision it becoming an essential tool in every designer's toolkit. With each update and enhancement, I am excited to see how this application will evolve and help users bring their creative visions to life. The journey is just beginning, and I can't wait to share more as PixelCraft Studio grows!
+      </p>
+    </div>
+  </section>
+
+
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Nabeela Heske. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Adding scroll functionality for navbar background change
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

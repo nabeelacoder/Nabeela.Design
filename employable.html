@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Case Study: Employable Resume Builder</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <style>
+        /* Reset some basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and background */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 50px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: #F1D26D;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 50px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #9B57D8;
+            font-size: 26px;
+            padding-bottom: 25px;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            border-bottom: 3px solid #9B57D8;
+            padding-bottom: 22px;
+        }
+
+        .name {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 60px;
+            width: 50%;
+        }
+
+        .name p {
+            font-size: 38px;
+            font-weight: bold;
+            color: transparent;
+            background-image: linear-gradient(to left, #ff7e5f, #feb47b, #ff9a8b, #ffb6a1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: rainbow 5s linear infinite;
+            padding-left: 20px;
+        }
+
+        .go-back {
+            font-size: 18px;
+            color: black;
+            text-decoration: none;
+            font-weight: normal;
+            margin-left: 15px;
+        }
+
+        @keyframes rainbow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
+/* Full Width Image Section */
+#intro {
+  margin-top: 100px; /* Adjusted for the navbar */
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+}
+
+/* Prototype Button */
+#prototype-button {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.prototype-btn {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #9B57D8;
+  border: 2px solid #9B57D8;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.prototype-btn:hover {
+  background-color: #9B57D8;
+  color: white;
+}
+
+/* Introduction Section */
+#introduction {
+  margin: 50px 0;
+  padding: 20px;
+  text-align: center;
+}
+
+#introduction h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #9B57D8;
+}
+
+#introduction p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+  margin-top: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Design Process Section */
+#design-process {
+  margin: 50px 0;
+  
+}
+
+.design-process-content {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+#design-process p{
+    font-size: 18px;
+    max-width: 1500px;
+    margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  
+}
+
+#design-process h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #9B57D8;
+}
+
+.hero-images img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover; /* Ensures the image is cropped and maintains aspect ratio */
+}
+.hero-imagess img {
+  width: 100%;
+  height: 650px;
+  object-fit: cover; /* Ensures the image is cropped and maintains aspect ratio */
+}
+/* Target Audience Section with Two Columns */
+#target-audience {
+  margin: 50px 0;
+  padding: 20px;
+}
+
+.target-audience-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.left-column, .right-column {
+  width: 48%;
+}
+
+.left-column h2, .right-column h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #9B57D8;
+  margin-bottom: 15px;
+}
+
+.left-column ul, .right-column ul {
+  list-style-type: disc;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+  padding-left: 20px;
+}
+
+.left-column li, .right-column li {
+  margin-bottom: 10px;
+}
+
+.color-palette-image img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* Features, Shortcomings, Conclusion Sections */
+#features,
+#shortcomings,
+#conclusion {
+  margin: 50px 0;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+ 
+}
+
+
+#conclusion p {
+  list-style: none;
+  font-size: 18px;
+    max-width: 1500px;
+    margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+text-align: center;
+}
+/* #features ul,
+#shortcomings ul{
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+    padding-left: 20px;
+    text-align: center;
+} */
+
+#features h2,
+#shortcomings h2,
+#conclusion h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #9B57D8;
+}
+
+#features ul li,
+#shortcomings ul li {
+  font-size: 18px;
+  margin: 10px 0;
+  text-decoration: none;
+}
+#features li, #shortcomings li{
+  text-decoration: none;
+}
+
+#conclusion p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+.iframe-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.iframe-container {
+  display: inline-block; /* Centers the iframe */
+  overflow: hidden; /* Hides overflow to prevent scrollbars */
+  width: 90%; /* Controls the container width, adjust as needed */
+  max-width: 1200px; /* Optional maximum width */
+  transform: scale(1.1); /* Adjust the zoom level here */
+  transform-origin: center top; /* Zooms from the top center */
+}
+
+.iframe-container iframe {
+  width: 100%; /* Full width of container */
+  height: 450px; /* Adjust height as needed */
+}
+
+
+      
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .skills-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .skill-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: black;
+    background: transparent;
+    border: 2px solid #9b4dca; /* Purple border */
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .skill-button:hover {
+    background-color: #9b4dca; /* Purple background on hover */
+    color: white;
+  }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="name">
+            <div class="skills-buttons">
+                <a href="index.html" class="go-back skill-button">Go Back</a>
+          </div>
+            
+            <p>Nabeela Heske</p>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Experiences</a></li>
+            <li><a href="index.html#contact">Contact Me</a></li>
+        </ul>
+    </nav>
+
+  <!-- Full Width Image Section -->
+  <section id="intro">
+    <div class="hero-image">
+      <img src="images/Employable.png" alt="Employable App" style="width: 100%;">
+    </div>
+  </section>
+
+  <!-- Prototype Button -->
+  <section id="prototype-button">
+    <div class="button-container">
+      <a href="#prototype" class="prototype-btn">Employable Resume Builder Prototype</a>
+    </div>
+  </section>
+
+    <!-- Introduction Section -->
+    <section id="introduction">
+        <div class="intro-content">
+          <h2>Introduction</h2>
+          <p>
+            In today’s competitive job market, a standout resume can make all the difference. Recognizing this need, I set out to create Employable, a mobile application designed to simplify the resume-building process for job seekers. This case study outlines the design process, target audience, color palette, goals, objectives, and challenges encountered along the way.
+          </p>
+        </div>
+      </section>
+
+        <!-- Design Process Section -->
+  <section id="introduction">
+    <div class="design-process-content">
+      <h2>Design Process</h2>
+      <p>
+        The journey began with extensive research into existing resume builders to identify common pain points and areas for improvement. I conducted user interviews and surveys to gather insights on what users found frustrating about current applications. This feedback was instrumental in shaping the features of Employable.      </p>
+    </div>
+    <div class="hero-images">
+      <img src="images/Employablehi.png" alt="Design Process" style="width: 100%; height: 650px; object-fit: cover;">
+    </div>
+    <div class="hero-images">
+      <img src="images/Employablemid.png" alt="Design Process" style="width: 100%; height: 650px; object-fit: cover;">
+     
+    </div>
+  </section>
+
+      <!-- Design Process Section -->
+      <section id="design-process">
+        <div class="design-process-content">
+          <h2>User Persona</h2>
+        </div>
+        <div class="hero-imagess">
+          <img src="images/Userpersona (1).jpg" alt="Design Process" style="width: 100%; height: 850px; object-fit: cover;">
+        </div>
+      </section>
+
+       <!-- Target Audience Section with Two Columns -->
+  <section id="target-audience">
+    <div class="target-audience-container">
+      <!-- Left Column (Target Audience) -->
+      <div class="left-column">
+        <h2>Target Audience</h2>
+        <ul>
+          <li>Young professionals looking to create a resume quickly and easily.</li>
+          <li>Recent graduates who need a simple, intuitive tool to build their resumes.</li>
+          <li>Tech-savvy individuals who prefer mobile applications for on-the-go tasks.</li>
+          <li>Job seekers in various industries requiring customizable templates.</li>
+          <li>Users who value simplicity, flexibility, and ease of use in digital tools.</li>
+        </ul>
+      </div>
+
+      <!-- Right Column (Color Palette) -->
+      <div class="right-column">
+        <h2>Color Palette</h2>
+        <ul>
+          <li>Primary color: #9B57D8 (Purple)</li>
+          <li>Secondary color: #F1D26D (Yellow)</li>
+          <li>Accent color: #FFB6A1 (Peachy pink)</li>
+          <li>Background color: #FFFFFF (White)</li>
+        </ul>
+        <div class="color-palette-image">
+          <img src="images/color.jpg" alt="Color Palette" style="width: 100%; height: 100px; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="introduction">
+    <div class="intro-content">
+      <h2>Goals and Objectives</h2>
+      <p>
+        The primary goals of Employable are:
+        To provide an intuitive platform for users to create professional resumes quickly.
+        To offer customizable templates that cater to various industries.
+        To ensure mobile compatibility for users who prefer to build resumes on their smartphones.      </p>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <div class="section-content">
+      <h2>Features</h2>
+      <ul>
+        <li>User-friendly interface that simplifies resume building for all skill levels.</li>
+        <li>Customizable templates tailored to various industries and job types.</li>
+        <li>Real-time preview of the resume as it’s being created.</li>
+        <li>Ability to export the resume as a PDF or share directly via email.</li>
+        <li>Step-by-step guidance through the resume creation process.</li>
+        <li>Integration with LinkedIn to easily import work history and skills.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Shortcomings Section -->
+  <section id="shortcomings">
+    <div class="section-content">
+      <h2>Shortcomings</h2>
+      <ul>
+        <li>The mobile app is not yet available for Android devices (only iOS).</li>
+        <li>Limited template customization options (future updates will address this).</li>
+        <li>Some users report that certain resume sections are unclear for beginners.</li>
+        <li>Feedback from initial testers indicated that the onboarding process could be smoother.</li>
+        <li>While the app is free, premium features require a subscription, which may deter some users.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Conclusion Section -->
+  <section id="conclusion">
+    <div class="section-content">
+      <h2>Conclusion</h2>
+      <p>
+        Overall, the Employable app aims to help job seekers create polished, professional resumes with ease. While there are a few shortcomings, the app’s user-friendly design and ability to simplify the resume-building process make it an invaluable tool for young professionals and graduates looking to enter the job market. Moving forward, the focus will be on expanding platform support, enhancing template customization, and improving the onboarding experience.
+      </p>
+    </div>
+  </section>
+
+  <!-- Employable Demo Section with iframe, centered and zoomed in -->
+<section class="iframe-section" id="prototype">
+  <h2>Employable Demo</h2>
+  <div class="iframe-container">
+    <iframe 
+      style="border: 1px solid rgba(0, 0, 0, 0.1);" 
+      src="https://embed.figma.com/proto/RTyt3d9pDSQvwRDHQAG6Kc/Employable-(Hi-fi)?node-id=3-127&node-type=frame&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=203%3A23&embed-host=share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Nabeela Heske. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Adding scroll functionality for navbar background change
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
